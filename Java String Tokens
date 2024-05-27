@@ -1,19 +1,24 @@
-import java.io.*;
-import java.util.*;
+import java.util.Scanner;
 
 public class Solution {
-
     public static void main(String[] args) {
-        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
         Scanner scan = new Scanner(System.in);
-        scan.close();
-
-        String s = scan.nextLine();
-        String[] splitString = s.split("[ ,!,?,.,_,@,']+");
-        System.out.println(splitString.length);
-        for(String res : splitString){
-            System.out.println(res);
-        }
         
+        // Read the entire input line
+        String s = scan.nextLine();
+        scan.close(); // Close the Scanner to prevent resource leaks
+        
+        // Split the string using a simplified regular expression
+        String[] splitString = s.trim().split("[ !?,._'@]+");
+        
+        // Handle the case of empty input
+        if (splitString.length == 1 && splitString[0].isEmpty()) {
+            System.out.println(0);
+        } else {
+            System.out.println(splitString.length);
+            for (String res : splitString) {
+                System.out.println(res);
+            }
+        }
     }
 }
